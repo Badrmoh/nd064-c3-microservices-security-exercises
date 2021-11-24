@@ -25,4 +25,3 @@ mkdir -p /home/rke/.ssh
 usermod -d /home/rke/ rke
 cp /root/.ssh/authorized_keys /home/rke/.ssh
 chown rke /home/rke -R
-s
