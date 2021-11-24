@@ -1,34 +1,28 @@
 # If you intened to deploy Kubernetes in an air-gapped environment,
 # please consult the documentation on how to configure custom RKE images.
 nodes:
-- address: 192.168.50.101
+- address: 192.168.60.101
   port: "22"
-  internal_address: 192.168.50.101
+  internal_address: 192.168.60.101
   role:
   - controlplane
   - etcd
   - worker
   hostname_override: node1
-  user: rke
+  user: root
   docker_socket: /var/run/docker.sock
-  ssh_key: ""
-  ssh_key_path: ~/.ssh/id_rsa
-  ssh_cert: ""
-  ssh_cert_path: ""
+  ssh_key_path: /home/badr/.ssh/rke_id_rsa
   labels: {}
   taints: []
-- address: 192.168.50.102
+- address: 192.168.60.102
   port: "22"
-  internal_address: 192.168.50.102
+  internal_address: 192.168.60.102
   role:
   - worker
   hostname_override: node2
   user: root
   docker_socket: /var/run/docker.sock
-  ssh_key: ""
-  ssh_key_path: ~/.ssh/id_rsa
-  ssh_cert: ""
-  ssh_cert_path: ""
+  ssh_key_path: /home/badr/.ssh/rke_id_rsa
   labels: {}
   taints: []
 services:
@@ -132,7 +126,7 @@ system_images:
   coredns: rancher/coredns-coredns:1.8.0
   coredns_autoscaler: rancher/cluster-proportional-autoscaler:1.8.1
   nodelocal: rancher/k8s-dns-node-cache:1.15.13
-  kubernetes: rancher/hyperkube:v1.20.4-rancher1
+  kubernetes: rancher/hyperkube:v1.21.7-rancher1
   flannel: rancher/coreos-flannel:v0.13.0-rancher1
   flannel_cni: rancher/flannel-cni:v0.3.0-rancher6
   calico_node: rancher/calico-node:v3.17.2
